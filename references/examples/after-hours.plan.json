@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "beats": [
+    {"id": "B01", "description": "A 问钥匙在哪里"},
+    {"id": "B02", "description": "B 把封套推到桌子中间"},
+    {"id": "B03", "description": "C 进门并问是否离开"},
+    {"id": "B04", "description": "A 看到并握住钥匙"},
+    {"id": "B05", "description": "A 决定先等一下"},
+    {"id": "B06", "description": "玻璃后的身影预示进场", "required": false}
+  ],
+  "setups": [
+    {"id": "M", "description": "三人同框和全程对白"},
+    {"id": "K", "description": "封套与钥匙的桌面斜俯"},
+    {"id": "A", "description": "阿青反应及最后一句"},
+    {"id": "B", "description": "阿成交还封套"}
+  ],
+  "shots": [
+    {"id": "S01-010", "method": "live", "setup": "M"},
+    {"id": "S01-020", "method": "live", "setup": "B"},
+    {"id": "S01-030", "method": "ai"},
+    {"id": "S01-040", "method": "live", "setup": "A"},
+    {"id": "S01-050", "method": "live", "setup": "K"}
+  ],
+  "main": {
+    "target_ms": 28000,
+    "cuts": [
+      {"id": "E01", "shot": "S01-010", "in_ms": 0, "out_ms": 4000, "covers": ["B01"], "source": {"take": "M-plan", "in_ms": 2000, "out_ms": 6000}},
+      {"id": "E02", "shot": "S01-020", "in_ms": 4000, "out_ms": 8000, "covers": ["B02"]},
+      {"id": "E03", "shot": "S01-030", "in_ms": 8000, "out_ms": 10000, "covers": ["B06"]},
+      {"id": "E04", "shot": "S01-010", "in_ms": 10000, "out_ms": 15000, "covers": ["B03"], "source": {"take": "M-plan", "in_ms": 12000, "out_ms": 17000}},
+      {"id": "E05", "shot": "S01-040", "in_ms": 15000, "out_ms": 18000, "covers": []},
+      {"id": "E06", "shot": "S01-050", "in_ms": 18000, "out_ms": 22000, "covers": ["B04"]},
+      {"id": "E07", "shot": "S01-040", "in_ms": 22000, "out_ms": 28000, "covers": ["B05"]}
+    ]
+  },
+  "fallback": {
+    "target_ms": 28000,
+    "allowed_methods": ["live"],
+    "cuts": [
+      {"id": "F01", "shot": "S01-010", "in_ms": 0, "out_ms": 18000, "covers": ["B01", "B02", "B03"], "source": {"take": "M-plan", "in_ms": 2000, "out_ms": 20000}},
+      {"id": "F02", "shot": "S01-050", "in_ms": 18000, "out_ms": 22000, "covers": ["B04"]},
+      {"id": "F03", "shot": "S01-010", "in_ms": 22000, "out_ms": 28000, "covers": ["B05"], "source": {"take": "M-plan", "in_ms": 24000, "out_ms": 30000}}
+    ]
+  }
+}
