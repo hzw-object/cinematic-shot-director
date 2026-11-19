@@ -1,0 +1,4 @@
+interface:
+  display_name: "电影镜头导演"
+  short_description: "从剧本或参考片设计电影镜头，交付机位图、实拍拍摄表或 AI 视频分镜与提示词"
+  default_prompt: "用 $cinematic-shot-director 把这场戏做成能拍、能剪的镜头表，标出机位、拍摄顺序和必拍镜头。"
