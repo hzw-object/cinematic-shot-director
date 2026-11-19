@@ -22,6 +22,8 @@
 
 ## 安装与试用
 
+使用 `npx` 安装时，请使用 Node.js 22.20.0 或更新版本。
+
 ```bash
 npx skills add hzw-object/cinematic-shot-director --skill cinematic-shot-director
 ```
